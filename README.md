@@ -4,7 +4,7 @@
 
 ### So far I've solved
 
-* [ ] Day 1
+* [x] [Day 1](src/day01.rs)
 * [ ] Day 2
 * [ ] Day 3
 * [ ] Day 4
