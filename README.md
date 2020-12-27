@@ -5,7 +5,7 @@
 ### So far I've solved
 
 * [x] [Day 1](src/day01.rs)
-* [ ] Day 2
+* [x] [Day 2](src/day02.rs)
 * [ ] Day 3
 * [ ] Day 4
 * [ ] Day 5
