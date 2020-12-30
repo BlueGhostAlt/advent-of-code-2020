@@ -4,23 +4,10 @@ enum Square {
     Tree,
 }
 
-fn parse(input: &str) -> Vec<impl Iterator<Item = Square> + '_> {
-    input
-        .lines()
-        .map(|line| {
-            line.trim()
-                .chars()
-                .filter_map(|character| match character {
-                    '.' => Some(Square::Open),
-                    '#' => Some(Square::Tree),
-                    _ => None,
-                })
-                .cycle()
-        })
-        .collect()
-}
-
-fn count_slope(map: &mut [impl Iterator<Item = Square>], right: usize, down: usize) -> usize {
+fn count_slope<M>(map: &mut [M], right: usize, down: usize) -> usize
+where
+    M: Iterator<Item = Square>,
+{
     map.into_iter()
         .enumerate()
         .filter_map(|(index, line)| {
@@ -37,6 +24,22 @@ fn count_slope(map: &mut [impl Iterator<Item = Square>], right: usize, down: usi
             }
         })
         .count()
+}
+
+fn parse(input: &str) -> Vec<impl Iterator<Item = Square> + '_> {
+    input
+        .lines()
+        .map(|line| {
+            line.trim()
+                .chars()
+                .filter_map(|character| match character {
+                    '.' => Some(Square::Open),
+                    '#' => Some(Square::Tree),
+                    _ => None,
+                })
+                .cycle()
+        })
+        .collect()
 }
 
 pub fn part1(input: String) -> usize {
