@@ -1,18 +1,25 @@
 use std::collections::HashSet;
 
+fn parse(input: String) -> HashSet<usize> {
+    input.lines().filter_map(|x| x.parse().ok()).collect()
+}
+
 pub fn part1(input: String) -> usize {
-    let nums: HashSet<usize> = input.lines().map(|x| x.parse().unwrap()).collect();
+    let nums = parse(input);
+
     for &x in nums.iter() {
         let y = 2020 - x;
         if nums.contains(&y) {
             return x * y;
         }
     }
-    0
+
+    unreachable!()
 }
 
 pub fn part2(input: String) -> usize {
-    let nums: HashSet<usize> = input.lines().map(|x| x.parse().unwrap()).collect();
+    let nums = parse(input);
+
     for &x in nums.iter() {
         for &y in nums.iter() {
             if x + y > 2020 {
@@ -24,5 +31,6 @@ pub fn part2(input: String) -> usize {
             }
         }
     }
-    0
+
+    unreachable!()
 }

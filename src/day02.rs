@@ -21,6 +21,7 @@ pub fn part1(input: String) -> usize {
     input
         .filter(|(min, max, character, password)| {
             let count = password.chars().filter(|c| c == character).count();
+
             count >= *min && count <= *max
         })
         .count()

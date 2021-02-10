@@ -1,25 +1,25 @@
 use std::collections::{HashMap, HashSet};
 
+fn parse(input: &str) -> impl Iterator<Item = HashMap<&str, &str>> {
+    input.split("\n\n").map(|passport| {
+        passport
+            .split_whitespace()
+            .filter_map(|key_value| {
+                let mut key_value = key_value.split(':');
+                let key = key_value.next()?;
+                let value = key_value.next()?;
+
+                Some((key, value))
+            })
+            .collect::<HashMap<_, _>>()
+    })
+}
+
 fn count_valid<P>(input: String, predicate: P) -> usize
 where
-    P: Fn(HashMap<&str, &str>) -> bool,
+    P: Fn(&HashMap<&str, &str>) -> bool,
 {
-    input
-        .split("\n\n")
-        .filter(|passport| {
-            let batch: HashMap<_, _> = passport
-                .split_whitespace()
-                .filter_map(|key_value| {
-                    let mut key_value = key_value.split(':');
-                    let key = key_value.next()?;
-                    let value = key_value.next()?;
-                    Some((key, value))
-                })
-                .collect();
-
-            predicate(batch)
-        })
-        .count()
+    parse(&input).filter(|batch| predicate(batch)).count()
 }
 
 fn in_range<T>(x: T, low: T, high: T) -> bool
@@ -31,12 +31,12 @@ where
 
 pub fn part1(input: String) -> usize {
     count_valid(input, |batch| {
-        let all_keys: HashSet<_> = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"]
+        let all_keys = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"]
             .iter()
-            .collect();
+            .collect::<HashSet<_>>();
 
         let keys = batch.keys().collect();
-        let diff: Vec<_> = all_keys.difference(&keys).collect();
+        let diff = all_keys.difference(&keys).collect::<Vec<_>>();
         if diff.len() > 1 {
             return false;
         }
@@ -51,8 +51,8 @@ pub fn part1(input: String) -> usize {
 pub fn part2(input: String) -> usize {
     count_valid(input, |batch| {
         batch
-            .into_iter()
-            .filter(|&(key, value)| match key {
+            .iter()
+            .filter(|&(&key, &value)| match key {
                 "byr" => match value.parse() {
                     Ok(x) => in_range(x, 1920, 2002),
                     Err(_) => false,

@@ -8,7 +8,7 @@
 * [x] [Day 2](src/day02.rs)
 * [x] [Day 3](src/day03.rs)
 * [x] [Day 4](src/day04.rs)
-* [ ] Day 5
+* [x] [Day 5](src/day05.rs)
 * [ ] Day 6
 * [ ] Day 7
 * [ ] Day 8
