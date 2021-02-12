@@ -12,16 +12,16 @@ fn main() {
 
     let cwd = env::current_dir().expect("There is no current working directory");
     let filename = cwd.join("input").join(format!("{:02}.txt", day));
-    let input =
-        fs::read_to_string(&filename).expect(&format!("Could not read input file for day {}", day));
+    let input = fs::read_to_string(&filename)
+        .unwrap_or_else(|_| panic!("Could not read input file for day {}", day));
 
     let to_run = get_day(day);
 
     println!("Day {}:", day);
-    if to_run.0 != noop {
+    if to_run.0 as usize != noop as usize {
         println!("  - Part 1: {:?}", to_run.0(input.clone()));
     }
-    if to_run.1 != noop {
-        println!("  - Part 2: {:?}", to_run.1(input.clone()))
+    if to_run.1 as usize != noop as usize {
+        println!("  - Part 2: {:?}", to_run.1(input))
     }
 }

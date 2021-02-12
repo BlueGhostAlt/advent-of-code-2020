@@ -32,7 +32,7 @@ macro_rules! aoc {
 }
 
 pub fn get_day(day: i32) -> (DayFn, DayFn) {
-    return match day {
+    match day {
         1 => aoc!(01, 290784, 177337980),
         2 => aoc!(02, 546, 275),
         3 => aoc!(03, 286, 3638606400),
@@ -42,7 +42,8 @@ pub fn get_day(day: i32) -> (DayFn, DayFn) {
         7 => aoc!(07, 119, 155802),
         _ => {
             eprintln!("Unknown day: {}", day);
-            return (noop, noop);
+
+            (noop, noop)
         }
-    };
+    }
 }

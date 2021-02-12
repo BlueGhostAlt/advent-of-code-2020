@@ -1,10 +1,9 @@
 fn parse_row(row_str: &str) -> u8 {
     let mut row = 0u8;
     row_str.chars().for_each(|c| {
-        row = row << 1;
-        match c {
-            'B' => row += 1,
-            _ => return,
+        row <<= 1;
+        if let 'B' = c {
+            row += 1
         }
     });
 
@@ -14,10 +13,9 @@ fn parse_row(row_str: &str) -> u8 {
 fn parse_column(column_str: &str) -> u8 {
     let mut column = 0u8;
     column_str.chars().for_each(|c| {
-        column = column << 1;
-        match c {
-            'R' => column += 1,
-            _ => return,
+        column <<= 1;
+        if let 'R' = c {
+            column += 1
         }
     });
 

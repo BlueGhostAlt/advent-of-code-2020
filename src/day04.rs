@@ -74,7 +74,7 @@ pub fn part2(input: String) -> usize {
                     match unit {
                         "cm" => in_range(height, 150, 193),
                         "in" => in_range(height, 59, 76),
-                        _ => return false,
+                        _ => false,
                     }
                 }
                 "hcl" => {
@@ -83,10 +83,7 @@ pub fn part2(input: String) -> usize {
                     chars.next().unwrap_or('\0') == '#'
                         && chars.filter(|c| c.is_digit(16)).count() == 6
                 }
-                "ecl" => match value {
-                    "amb" | "blu" | "brn" | "gry" | "grn" | "hzl" | "oth" => true,
-                    _ => false,
-                },
+                "ecl" => matches!(value, "amb" | "blu" | "brn" | "gry" | "grn" | "hzl" | "oth"),
                 "pid" => value.len() == 9 && value.chars().all(|c| c.is_digit(10)),
                 _ => false,
             })
