@@ -12,7 +12,7 @@
 * [x] [Day 6](src/day06.rs)
 * [x] [Day 7](src/day07.rs)
 * [x] [Day 8](src/day08.rs)
-* [ ] Day 9
+* [x] [Day 9](src/day09.rs)
 * [ ] Day 10
 * [ ] Day 11
 * [ ] Day 12
