@@ -15,11 +15,11 @@ fn parse(input: &str) -> impl Iterator<Item = HashMap<&str, &str>> {
     })
 }
 
-fn count_valid<P>(input: String, predicate: P) -> usize
+fn count_valid<P>(input: &str, predicate: P) -> usize
 where
     P: Fn(&HashMap<&str, &str>) -> bool,
 {
-    parse(&input).filter(|batch| predicate(batch)).count()
+    parse(input).filter(|batch| predicate(batch)).count()
 }
 
 fn in_range<T>(x: T, low: T, high: T) -> bool
@@ -29,7 +29,7 @@ where
     x >= low && x <= high
 }
 
-pub fn part1(input: String) -> usize {
+pub fn part1(input: &str) -> usize {
     count_valid(input, |batch| {
         let all_keys = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"]
             .iter()
@@ -48,7 +48,7 @@ pub fn part1(input: String) -> usize {
     })
 }
 
-pub fn part2(input: String) -> usize {
+pub fn part2(input: &str) -> usize {
     count_valid(input, |batch| {
         batch
             .iter()

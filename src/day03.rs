@@ -42,13 +42,13 @@ where
         .count()
 }
 
-pub fn part1(input: String) -> usize {
-    count_slope(&mut parse(&input), 3, 1)
+pub fn part1(input: &str) -> usize {
+    count_slope(&mut parse(input), 3, 1)
 }
 
-pub fn part2(input: String) -> usize {
+pub fn part2(input: &str) -> usize {
     [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
         .iter()
-        .map(|(right, down)| count_slope(&mut parse(&input), *right, *down))
+        .map(|(right, down)| count_slope(&mut parse(input), *right, *down))
         .product()
 }

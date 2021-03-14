@@ -1,10 +1,10 @@
 use std::collections::HashSet;
 
-fn parse(input: String) -> HashSet<usize> {
+fn parse(input: &str) -> HashSet<usize> {
     input.lines().filter_map(|x| x.parse().ok()).collect()
 }
 
-pub fn part1(input: String) -> usize {
+pub fn part1(input: &str) -> usize {
     let nums = parse(input);
 
     for &x in nums.iter() {
@@ -17,7 +17,7 @@ pub fn part1(input: String) -> usize {
     unreachable!()
 }
 
-pub fn part2(input: String) -> usize {
+pub fn part2(input: &str) -> usize {
     let nums = parse(input);
 
     for &x in nums.iter() {

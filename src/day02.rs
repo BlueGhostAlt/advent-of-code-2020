@@ -15,8 +15,8 @@ fn parse(input: &str) -> impl Iterator<Item = (usize, usize, char, &str)> {
     })
 }
 
-pub fn part1(input: String) -> usize {
-    let input = parse(&input);
+pub fn part1(input: &str) -> usize {
+    let input = parse(input);
 
     input
         .filter(|(min, max, character, password)| {
@@ -27,8 +27,8 @@ pub fn part1(input: String) -> usize {
         .count()
 }
 
-pub fn part2(input: String) -> usize {
-    let input = parse(&input);
+pub fn part2(input: &str) -> usize {
+    let input = parse(input);
 
     input
         .filter(|(first, second, character, password)| {

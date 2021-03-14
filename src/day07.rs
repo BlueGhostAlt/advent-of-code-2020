@@ -43,8 +43,8 @@ fn contains_gold<'a>(cache: &mut HashMap<&'a str, bool>, map: &BagMap<'a>, bag: 
     }
 }
 
-pub fn part1(input: String) -> usize {
-    let bags = parse(&input);
+pub fn part1(input: &str) -> usize {
+    let bags = parse(input);
 
     let mut cache = HashMap::new();
     cache.insert("shiny gold", true);
@@ -69,8 +69,8 @@ fn total_bags(map: &BagMap, bag: &str) -> i32 {
     }
 }
 
-pub fn part2(input: String) -> usize {
-    let bags = parse(&input);
+pub fn part2(input: &str) -> usize {
+    let bags = parse(input);
 
     let total = total_bags(&bags, "shiny gold");
 

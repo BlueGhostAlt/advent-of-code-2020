@@ -7,8 +7,8 @@ fn parse(input: &str) -> Vec<u64> {
     input.lines().filter_map(|s| s.parse().ok()).collect()
 }
 
-fn solve(input: String, part: Part) -> u64 {
-    let input = parse(&input);
+fn solve(input: &str, part: Part) -> u64 {
+    let input = parse(input);
 
     let part1_result = input
         .windows(26)
@@ -58,10 +58,10 @@ fn solve(input: String, part: Part) -> u64 {
     unreachable!()
 }
 
-pub fn part1(input: String) -> u64 {
+pub fn part1(input: &str) -> u64 {
     solve(input, Part::Part1)
 }
 
-pub fn part2(input: String) -> u64 {
+pub fn part2(input: &str) -> u64 {
     solve(input, Part::Part2)
 }

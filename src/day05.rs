@@ -22,7 +22,7 @@ fn parse_column(column_str: &str) -> u8 {
     column
 }
 
-pub fn part1(input: String) -> usize {
+pub fn part1(input: &str) -> usize {
     input
         .lines()
         .map(|line| {
@@ -35,7 +35,7 @@ pub fn part1(input: String) -> usize {
         .unwrap_or(0)
 }
 
-pub fn part2(input: String) -> usize {
+pub fn part2(input: &str) -> usize {
     let mut seat_ids: Vec<_> = input
         .lines()
         .map(|line| {

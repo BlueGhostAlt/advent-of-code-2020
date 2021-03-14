@@ -34,7 +34,7 @@ fn run_program(instructions: &[Instruction]) -> Result<isize, isize> {
                     match instructions[ins] {
                         Instruction::Acc(arg) => acc += arg,
                         Instruction::Jmp(arg) => ins = (ins as isize + arg - 1) as usize,
-                        Instruction::Nop(_) => {},
+                        Instruction::Nop(_) => {}
                     };
 
                     ins += 1;
@@ -46,8 +46,8 @@ fn run_program(instructions: &[Instruction]) -> Result<isize, isize> {
     }
 }
 
-pub fn part1(input: String) -> isize {
-    let instructions = parse(&input);
+pub fn part1(input: &str) -> isize {
+    let instructions = parse(input);
 
     match run_program(&instructions) {
         Err(acc) => acc,
@@ -55,8 +55,8 @@ pub fn part1(input: String) -> isize {
     }
 }
 
-pub fn part2(input: String) -> isize {
-    let mut instructions = parse(&input);
+pub fn part2(input: &str) -> isize {
+    let mut instructions = parse(input);
 
     for i in 0..instructions.len() {
         let ins = &mut instructions[i];

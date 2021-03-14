@@ -5,4 +5,4 @@ authors = ["BlueGhostGH <engisoftleaderoff@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-paste = "1.0"
+paste = "1"
